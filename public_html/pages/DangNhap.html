@@ -33,6 +33,22 @@
         }
       }
     </style>
+    <script>
+      function DangNhap(){
+        const EmailND = document.getElementById("EmailNguoiDung").value
+        const MatKhauNd = document.getElementById("MatKhauNguoiDung").value
+        const ThongTin = JSON.parse(localStorage.getItem("ThongTinNguoiDung"))
+        const EmailLayDuoc = ThongTin.EmailNguoiDung
+        const MatKhauLayDuoc = ThongTin.MatKhauNguoiDung
+        if(EmailND === EmailLayDuoc && MatKhauNd === MatKhauLayDuoc){
+          alert("Đăng Nhập thành công")
+          setInterval(() => {
+            window.location.href = "../index.html"
+          }, 1000);
+        }
+        // localStorage.removeItem("ThongTinNguoiDung") Dung neu muon xoa thong tin nguoi dung
+      }
+    </script>
   </head>
 
   <body>
@@ -71,26 +87,25 @@
                 <p class="text-center fw-bold mx-3 mb-0">Hoặc</p>
               </div>
 
-              <!-- Email input -->
               <div data-mdb-input-init class="form-outline mb-4">
                 <input
                   type="email"
-                  id="form3Example3"
+                  id="EmailNguoiDung"
                   class="form-control form-control-lg"
                   placeholder="Nhập vào email đăng nhập" />
               </div>
 
-              <!-- Password input -->
               <div data-mdb-input-init class="form-outline mb-3">
                 <input
                   type="password"
-                  id="form3Example4"
+                  id="MatKhauNguoiDung"
                   class="form-control form-control-lg"
                   placeholder="Nhập mật khẩu" />
               </div>
 
               <div class="d-flex justify-content-between align-items-center">
-                <!-- Checkbox -->
+
+
                 <div class="form-check mb-0">
                   <input
                     class="form-check-input me-2"
@@ -110,7 +125,7 @@
                   data-mdb-button-init
                   data-mdb-ripple-init
                   class="btn btn-primary btn-lg"
-                  style="padding-left: 2.5rem; padding-right: 2.5rem">
+                  style="padding-left: 2.5rem; padding-right: 2.5rem" onclick = "DangNhap()">
                   Đăng nhập
                 </button>
                 <p class="small fw-bold mt-2 pt-1 mb-0">

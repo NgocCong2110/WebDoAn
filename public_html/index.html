@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-        crossorigin="anonymous">
-    </script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script>
-        function ChuyenSangMiY(){
-            window.location.href = "pages/LuaChonMiY.html"
-        }
+      function ChuyenSangMiY() {
+        window.location.href = "pages/LuaChonMiY.html";
+      }
     </script>
-</head>
+    <style>
+        #HomePage:hover {
+            background-color: rgb(245, 245, 245);
+        }
+        #GioHang:hover {
+            background-color: rgb(245, 245, 245);
+        }
+    </style>
+  </head>
 
-<body>
+  <body>
     <header class="p-3 mb-3 border-bottom">
+<<<<<<< HEAD
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> <a
                     href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -46,80 +60,185 @@
                     </ul>
                 </div>
             </div>
+=======
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a
+            href="/"
+            class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+            <svg
+              class="bi me-2"
+              width="40"
+              height="32"
+              role="img"
+              aria-label="Bootstrap">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li>
+              <a href="index.html" class="nav-link px-2 link-secondary" id="HomePage"
+                >Trang Chủ</a
+              >
+            </li>           
+          </ul>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 w-50" role="search">
+            
+            <input
+              type="search"
+              class="form-control"
+              
+              placeholder="Search..."
+              aria-label="Search" />
+          </form>
+          <ul
+            class="nav d-block col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 ">
+            <li>
+              <a href="#" class="nav-link px-2 link-secondary" id="GioHang"
+                ><i class="fa-solid fa-cart-shopping" style="padding: 5px;"></i>Giỏ Hàng</a
+              >
+            </li>
+          </ul>
+          <div class="dropdown text-end">
+            <a
+              href="#"
+              class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img
+                src="images/default-user-image.png"
+                alt="mdo"
+                width="32"
+                height="32"
+                class="rounded-circle" />
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="pages/DangNhap.html">Đăng Nhập</a></li>
+              <li><a class="dropdown-item" href="pages/DangKy.html">Đăng Ký</a></li>
+            </ul>
+          </div>
+>>>>>>> c42df6ef57aebcd4bf0345e753617fb70600f4a8
         </div>
+      </div>
     </header>
     <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="card mb-4 shadow-sm">
-                    <img src="images/AnhMiY.jpg" class="bd-placeholder-img card-img-top" height="225"
-                        style="object-fit: cover; width: 100%;" alt="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">Mì Spaghetii</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="ChuyenSangMiY()">Xem Thêm</button>
-                            </div>
-                            <!-- <small class="text-muted">9 phút trước</small> -->
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="card mb-4 shadow-sm">
+            <img
+              src="images/AnhMiY.jpg"
+              class="bd-placeholder-img card-img-top"
+              height="225"
+              style="object-fit: cover; width: 100%"
+              alt="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">Mì Spaghetii</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                    onclick="ChuyenSangMiY()">
+                    Xem Thêm
+                  </button>
                 </div>
-
-                <div class="card mb-4 shadow-sm">
-                    <img src="images/AnhPizza.jpg" class="bd-placeholder-img card-img-top" height="225"
-                        style="object-fit: cover; width: 100%;" alt="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">Pizza</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Xem Thêm</button>
-                            </div>
-                            <!-- <small class="text-muted">9 phút trước</small> -->
-                        </div>
-                    </div>
-                </div>
-                 <div class="card mb-4 shadow-sm">
-                    <img src="images/AnhHambuger.jpg" class="bd-placeholder-img card-img-top" height="225"
-                        style="object-fit: cover; width: 100%;" alt="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">Hambuger</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Xem Thêm</button>
-                            </div>
-                            <!-- <small class="text-muted">9 phút trước</small> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 shadow-sm">
-                    <img src="images/AnhPotato.jpg" class="bd-placeholder-img card-img-top" height="225"
-                        style="object-fit: cover; width: 100%;" alt="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">Khoai tây chiên</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Xem Thêm</button>
-                            </div>
-                            <!-- <small class="text-muted">9 phút trước</small> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4 shadow-sm">
-                    <img src="images/AnhKem.jpg" class="bd-placeholder-img card-img-top" height="225"
-                        style="object-fit: cover; width: 100%;" alt="Thumbnail">
-                    <div class="card-body">
-                        <p class="card-text">Kem</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Xem Thêm</button>
-                            </div>
-                            <!-- <small class="text-muted">9 phút trước</small> -->
-                        </div>
-                    </div>
-                </div>
+                <!-- <small class="text-muted">9 phút trước</small> -->
+              </div>
             </div>
-        </div>
-    </div>
-</body>
+          </div>
 
+          <div class="card mb-4 shadow-sm">
+            <img
+              src="images/AnhPizza.jpg"
+              class="bd-placeholder-img card-img-top"
+              height="225"
+              style="object-fit: cover; width: 100%"
+              alt="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">Pizza</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary">
+                    Xem Thêm
+                  </button>
+                </div>
+                <!-- <small class="text-muted">9 phút trước</small> -->
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <img
+              src="images/AnhHambuger.jpg"
+              class="bd-placeholder-img card-img-top"
+              height="225"
+              style="object-fit: cover; width: 100%"
+              alt="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">Hambuger</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary">
+                    Xem Thêm
+                  </button>
+                </div>
+                <!-- <small class="text-muted">9 phút trước</small> -->
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <img
+              src="images/AnhPotato.jpg"
+              class="bd-placeholder-img card-img-top"
+              height="225"
+              style="object-fit: cover; width: 100%"
+              alt="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">Khoai tây chiên</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary">
+                    Xem Thêm
+                  </button>
+                </div>
+                <!-- <small class="text-muted">9 phút trước</small> -->
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <img
+              src="images/AnhKem.jpg"
+              class="bd-placeholder-img card-img-top"
+              height="225"
+              style="object-fit: cover; width: 100%"
+              alt="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">Kem</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary">
+                    Xem Thêm
+                  </button>
+                </div>
+                <!-- <small class="text-muted">9 phút trước</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

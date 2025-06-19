@@ -72,17 +72,15 @@
             </div>
         </div>
     </div>
-    <button onclick = "DangXuat()">Click here to dang xuat</button>
+
     <script>
         function GetUserName() {
-            const users = JSON.parse(localStorage.getItem("users"));
+            const users = JSON.parse(localStorage.getItem("currentlogin"));
             if (!users || users.length === 0) return;
 
-            const UserName = users[0].TenNguoiDung;
+            const UserName = users.TenNguoiDung;
             const username = document.querySelectorAll(".TenNguoiDung");
-            for (let i = 0; i < username.length; i++) {
-                username[i].innerText = UserName;
-            }
+            username.forEach(el => el.innerText = UserName)
             // const UserInfo = JSON.parse(localStorage.getItem("users"))
             // const UserName = UserInfo.TenNguoiDung
             // const username = document.querySelectorAll(".TenNguoiDung")
@@ -92,10 +90,10 @@
         }
         //Lay thong tin nguoi dung khi dang nhap
         function GetUserEmail() {
-            const users = JSON.parse(localStorage.getItem("users"));
+            const users = JSON.parse(localStorage.getItem("currentlogin"));
             if (!users || users.length === 0) return;
 
-            const UserEmail = users[0].EmailNguoiDung;
+            const UserEmail = users.EmailNguoiDung;
             const emailEl = document.getElementById("EmailNguoiDung");
             if (emailEl) {
                 emailEl.innerText = UserEmail;

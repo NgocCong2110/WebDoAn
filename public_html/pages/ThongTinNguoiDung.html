@@ -11,26 +11,7 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <script>
-        function GetUserName() {
-            const UserInfo = JSON.parse(localStorage.getItem("ThongTinNguoiDung"))
-            const UserName = UserInfo.TenNguoiDung
-            const username = document.querySelectorAll(".TenNguoiDung")
-            for (let i = 0; i < username.length; i++) {
-                username[i].innerHTML = UserName
-            }
-        }
-        //Lay thong tin nguoi dung khi dang nhap
-        function GetUserEmail() {
-            const UserInfo = JSON.parse(localStorage.getItem("ThongTinNguoiDung"))
-            const UserEmail = UserInfo.EmailNguoiDung
-            document.getElementById("EmailNguoiDung").innerText = UserEmail
-        }
-        document.addEventListener("DOMContentLoaded", function () {
-            GetUserEmail(),
-                GetUserName()
-        })
-    </script>
+    
 </head>
 
 <body>
@@ -91,7 +72,31 @@
             </div>
         </div>
     </div>
-    
+    <button onclick = "DangXuat()">Click here baybi</button>
+    <script>
+        function GetUserName() {
+            const UserInfo = JSON.parse(localStorage.getItem("users"))
+            const UserName = UserInfo.TenNguoiDung
+            const username = document.querySelectorAll(".TenNguoiDung")
+            for (let i = 0; i < username.length; i++) {
+                username[i].innerHTML = UserName
+            }
+        }
+        //Lay thong tin nguoi dung khi dang nhap
+        function GetUserEmail() {
+            const UserInfo = JSON.parse(localStorage.getItem("users"))
+            const UserEmail = UserInfo.EmailNguoiDung
+            document.getElementById("EmailNguoiDung").innerText = UserEmail
+        }
+        function DangXuat(){
+            localStorage.removeItem("ThongTinNguoiDung")
+        }
+        //Khong viet function duoi day
+        document.addEventListener("DOMContentLoaded", function () {
+            GetUserEmail(),
+                GetUserName()
+        })
+    </script>
 </body>
 
 </html>

@@ -75,18 +75,34 @@
     <button onclick = "DangXuat()">Click here to dang xuat</button>
     <script>
         function GetUserName() {
-            const UserInfo = JSON.parse(localStorage.getItem("users"))
-            const UserName = UserInfo.TenNguoiDung
-            const username = document.querySelectorAll(".TenNguoiDung")
+            const users = JSON.parse(localStorage.getItem("users"));
+            if (!users || users.length === 0) return;
+
+            const UserName = users[0].TenNguoiDung;
+            const username = document.querySelectorAll(".TenNguoiDung");
             for (let i = 0; i < username.length; i++) {
-                username[i].innerHTML = UserName
+                username[i].innerText = UserName;
             }
+            // const UserInfo = JSON.parse(localStorage.getItem("users"))
+            // const UserName = UserInfo.TenNguoiDung
+            // const username = document.querySelectorAll(".TenNguoiDung")
+            // for (let i = 0; i < username.length; i++) {
+            //     username[i].innerHTML = UserName
+            // }
         }
         //Lay thong tin nguoi dung khi dang nhap
         function GetUserEmail() {
-            const UserInfo = JSON.parse(localStorage.getItem("users"))
-            const UserEmail = UserInfo.EmailNguoiDung
-            document.getElementById("EmailNguoiDung").innerText = UserEmail
+            const users = JSON.parse(localStorage.getItem("users"));
+            if (!users || users.length === 0) return;
+
+            const UserEmail = users[0].EmailNguoiDung;
+            const emailEl = document.getElementById("EmailNguoiDung");
+            if (emailEl) {
+                emailEl.innerText = UserEmail;
+            }
+            // const UserInfo = JSON.parse(localStorage.getItem("users"))
+            // const UserEmail = UserInfo.EmailNguoiDung
+            // document.getElementById("EmailNguoiDung").innerText = UserEmail
         }
         function DangXuat(){
             localStorage.removeItem("users")

@@ -139,8 +139,8 @@
         //tìm kiếm thông tin người dùng tồn tại
         const timNguoiDung = ThongTinNguoiDung.find(
           (userdata) =>
-            userdata.emailUser === emailElement.value &&
-            userdata.matkhauUser === matkhauElement.value
+            userdata.EmailNguoiDung === emailElement.value &&
+            userdata.MatKhauNguoiDung === matkhauElement.value
         );
         if(!timNguoiDung){
           alert("Sai email hoặc mật khẩu. Vui lòng nhập lại!");

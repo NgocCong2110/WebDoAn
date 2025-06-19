@@ -72,7 +72,6 @@
             </div>
         </div>
     </div>
-    <button onclick = "DangXuat()">Click here to dang xuat</button>
     <script>
         function GetUserName() {
             const users = JSON.parse(localStorage.getItem("users"));
@@ -104,11 +103,6 @@
             // const UserEmail = UserInfo.EmailNguoiDung
             // document.getElementById("EmailNguoiDung").innerText = UserEmail
         }
-        function DangXuat(){
-            localStorage.removeItem("users")
-        }
-
-
 
         //Khong viet function duoi day
         document.addEventListener("DOMContentLoaded", function () {

@@ -70,7 +70,7 @@
         <ul
           class="nav d-block col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 ">
           <li>
-            <a href="#" class="nav-link px-2 link-secondary" id="GioHang"
+            <a class="nav-link px-2 link-secondary" id="GioHang"
               ><i class="fa-solid fa-cart-shopping" style="padding: 5px;"></i>Giỏ Hàng</a
             >
           </li>
@@ -89,12 +89,13 @@
               class="rounded-circle" />
           </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+            <li><a class="dropdown-item" href="./ThongTinNguoiDung.html">Thông tin tài khoản</a></li>
             <li>
               <hr class="dropdown-divider" />
             </li>
-            <li><a class="dropdown-item" href="pages/DangNhap.html">Đăng Nhập</a></li>
-            <li><a class="dropdown-item" href="pages/DangKy.html">Đăng Ký</a></li>
+            <li><a class="dropdown-item" href="pages/DangNhap.html" id="dangNhap">Đăng Nhập</a></li>
+            <li><a class="dropdown-item" href="pages/DangKy.html" id="dangKy">Đăng Ký</a></li>
+            <li><a class="dropdown-item" href="../index.html" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a></li>
           </ul>
         </div>
       </div>
@@ -154,6 +155,35 @@
         </div>
     </div>
 
+    <script>
+      function DangXuat() {
+        const currentUser = localStorage.getItem("currentlogin");
+        if(currentUser){
+            localStorage.removeItem("currentlogin");
+            location.reload();
+        } else {
+            console.log("Khong co user nao!");
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentlogin");
+        
+        if (!currentUser){
+            const dangXuatBtn = document.getElementById("dangXuat");
+            if (dangXuatBtn) dangXuatBtn.style.display = "none";
+        } 
+
+        if (currentUser) {
+          const dangNhapBtn = document.getElementById("dangNhap");
+          const dangKyBtn = document.getElementById("dangKy"); 
+
+          if (dangNhapBtn) dangNhapBtn.style.display = "none";
+          if (dangKyBtn) dangKyBtn.style.display = "none";
+          
+        }
+      });
+    </script>
 </body>
 
 </html>

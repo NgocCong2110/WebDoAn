@@ -21,14 +21,14 @@
             }
         }
         //Lay thong tin nguoi dung khi dang nhap
-        function GetUserEmail(){
+        function GetUserEmail() {
             const UserInfo = JSON.parse(localStorage.getItem("ThongTinNguoiDung"))
             const UserEmail = UserInfo.EmailNguoiDung
             document.getElementById("EmailNguoiDung").innerText = UserEmail
         }
-        document.addEventListener("DOMContentLoaded", function(){
+        document.addEventListener("DOMContentLoaded", function () {
             GetUserEmail(),
-            GetUserName()
+                GetUserName()
         })
     </script>
 </head>
@@ -84,13 +84,14 @@
                 <h3 class="TenNguoiDung"></h3>
                 <ul class="list-group list-group-flush mb-3">
                     <li class="list-group-item bg-transparent">
-                        <i class="bi bi-envelope-fill me-2" id = "EmailNguoiDung"></i>
+                        <i class="bi bi-envelope-fill me-2" id="EmailNguoiDung"></i>
                     </li>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

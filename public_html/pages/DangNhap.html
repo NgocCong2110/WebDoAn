@@ -145,6 +145,7 @@
         if(!timNguoiDung){
           alert("Sai email hoặc mật khẩu. Vui lòng nhập lại!");
         } else {
+          //Lay thong tin nguoi dung hien tai
           localStorage.setItem("currentlogin", JSON.stringify(timNguoiDung))
           window.location.href = "../index.html";
         }

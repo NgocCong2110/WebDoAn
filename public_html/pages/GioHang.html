@@ -26,19 +26,40 @@
       }
       #GioHang,
       #HomePage {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 4px;
+        color: #333;
+        text-decoration: none;
         font-weight: bold;
-        transition: all 0.1s linear;
       }
-      #HomePage:hover {
-        background-color: rgb(245, 245, 245);
-        border-bottom: 3px solid rgb(40, 147, 224);
+      #HomePage::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
       }
-      #GioHang:hover {
-        background-color: rgb(245, 245, 245);
-        border-bottom: 3px solid rgb(40, 147, 224);
+      #HomePage:hover::after {
+        width: 100%;
       }
-      #GioHang {
-        border-bottom: 3px solid rgb(40, 147, 224);
+
+
+      #GioHang::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
+      }
+      #GioHang:hover::after {
+        width: 100%;
       }
     </style>
   </head>

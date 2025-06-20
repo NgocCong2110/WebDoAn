@@ -20,15 +20,40 @@
     <style>
       #GioHang,
       #HomePage {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 4px;
+        color: #333;
+        text-decoration: none;
         font-weight: bold;
       }
-      #HomePage:hover {
-        background-color: rgb(245, 245, 245);
-        border-bottom: 3px solid rgb(40, 147, 224);
+      #HomePage::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
       }
-      #GioHang:hover {
-        background-color: rgb(245, 245, 245);
-        border-bottom: 3px solid rgb(40, 147, 224);
+      #HomePage:hover::after {
+        width: 100%;
+      }
+
+
+      #GioHang::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
+      }
+      #GioHang:hover::after {
+        width: 100%;
       }
     </style>
   </head>
@@ -111,7 +136,11 @@
                 >
               </li>
               <li>
-                <a class="dropdown-item" href="../index.html" id="dangXuat" onclick="DangXuat()"
+                <a
+                  class="dropdown-item"
+                  href="../index.html"
+                  id="dangXuat"
+                  onclick="DangXuat()"
                   >Đăng Xuất</a
                 >
               </li>
@@ -171,13 +200,26 @@
 
       function DangXuat() {
         const currentUser = localStorage.getItem("currentlogin");
-        if(currentUser){
-            localStorage.removeItem("currentlogin");
-            location.reload();
+        if (currentUser) {
+          localStorage.removeItem("currentlogin");
+          location.reload();
         } else {
-            console.log("Khong co user nao!");
+          console.log("Khong co user nao!");
         }
-      };
+      }
+      //kiem tra currentLogin gio hang
+      const GioHang = document.getElementById("GioHang");
+
+      GioHang.addEventListener("click", function (e) {
+        e.preventDefault();
+        const currentUser = localStorage.getItem("currentlogin");
+
+        if (currentUser) {
+          window.location.href = "/public_html/pages/GioHang.html";
+        } else {
+          window.location.href = "/public_html/pages/DangNhap.html";
+        }
+      });
 
       //Khong viet function duoi day
       document.addEventListener("DOMContentLoaded", function () {

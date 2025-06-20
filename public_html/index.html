@@ -16,55 +16,44 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <script>
-      function ChuyenSangMiY() {
-        window.location.href = "pages/LuaChonMiY.html";
-      }
-
-      function DangXuat() {
-        const currentUser = localStorage.getItem("currentlogin");
-        if(currentUser){
-            localStorage.removeItem("currentlogin");
-            location.reload();
-        } else {
-            console.log("Khong co user nao!");
-        }
-      };
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const currentUser = localStorage.getItem("currentlogin");
-        
-        if (!currentUser){
-            const dangXuatBtn = document.getElementById("dangXuat");
-            if (dangXuatBtn) dangXuatBtn.style.display = "none";
-        } 
-
-        if (currentUser) {
-          const dangNhapBtn = document.getElementById("dangNhap");
-          const dangKyBtn = document.getElementById("dangKy"); 
-
-          if (dangNhapBtn) dangNhapBtn.style.display = "none";
-          if (dangKyBtn) dangKyBtn.style.display = "none";
-          
-        }
-      });
-
-    </script>
+    
     <style>
       #GioHang,
       #HomePage {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 4px;
+        color: #333;
+        text-decoration: none;
         font-weight: bold;
       }
-      #HomePage:hover {
-        background-color: rgb(245, 245, 245);
-        border-bottom: 3px solid rgb(40, 147, 224);
+      #HomePage::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
       }
-      #GioHang:hover {
-        background-color: rgb(245, 245, 245);
-        border-bottom: 3px solid rgb(40, 147, 224);
+      #HomePage:hover::after {
+        width: 100%;
       }
-      #HomePage {
-        border-bottom: 3px solid rgb(40, 147, 224);
+
+
+      #GioHang::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
+      }
+      #GioHang:hover::after {
+        width: 100%;
       }
     </style>
   </head>
@@ -109,10 +98,7 @@
           </form>
           <ul class="nav d-block col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
             <li>
-              <a
-                href="/public_html/pages/GioHang.html"
-                class="nav-link px-2 link-secondary"
-                id="GioHang"
+              <a href="" class="nav-link px-2 link-secondary" id="GioHang"
                 ><i class="fa-solid fa-cart-shopping" style="padding: 5px"></i
                 >Giỏ Hàng</a
               >
@@ -153,7 +139,15 @@
                   >Đăng Ký</a
                 >
               </li>
-              <li><a class="dropdown-item" href="index.html" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a></li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="index.html"
+                  id="dangXuat"
+                  onclick="DangXuat()"
+                  >Đăng Xuất</a
+                >
+              </li>
             </ul>
           </div>
         </div>
@@ -230,5 +224,51 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function ChuyenSangMiY() {
+        window.location.href = "pages/LuaChonMiY.html";
+      }
+
+      function DangXuat() {
+        const currentUser = localStorage.getItem("currentlogin");
+        if (currentUser) {
+          localStorage.removeItem("currentlogin");
+          location.reload();
+        } else {
+          console.log("Khong co user nao!");
+        }
+      }
+      //kiem tra currentLogin gio hang
+      const GioHang = document.getElementById("GioHang");
+
+      GioHang.addEventListener("click", function (e) {
+        e.preventDefault();
+        const currentUser = localStorage.getItem("currentlogin");
+
+        if (currentUser) {
+          window.location.href = "/public_html/pages/GioHang.html";
+        } else {
+          window.location.href = "/public_html/pages/DangNhap.html";
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentlogin");
+
+        if (!currentUser) {
+          const dangXuatBtn = document.getElementById("dangXuat");
+          if (dangXuatBtn) dangXuatBtn.style.display = "none";
+        }
+
+        if (currentUser) {
+          const dangNhapBtn = document.getElementById("dangNhap");
+          const dangKyBtn = document.getElementById("dangKy");
+
+          if (dangNhapBtn) dangNhapBtn.style.display = "none";
+          if (dangKyBtn) dangKyBtn.style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>

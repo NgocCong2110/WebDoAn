@@ -61,98 +61,71 @@
   <body>
     <header class="p-3 mb-3 border-bottom">
       <div class="container">
-        <div
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a
-            href="/"
-            class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-            <svg
-              class="bi me-2"
-              width="40"
-              height="32"
-              role="img"
-              aria-label="Bootstrap">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-          <ul
-            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a
-                href="index.html"
-                class="nav-link px-2 link-secondary"
-                id="HomePage"
-                ><i class="fa-solid fa-house" style="padding: 5px"></i>Trang
-                Chủ</a
-              >
-            </li>
-          </ul>
-          <form
-            class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 w-50"
-            role="search">
-            <input
-              type="search"
-              class="form-control"
-              placeholder="Search..."
-              aria-label="Search" />
-          </form>
-          <ul class="nav d-block col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <li>
-              <a href="" class="nav-link px-2 link-secondary" id="GioHang"
-                ><i class="fa-solid fa-cart-shopping" style="padding: 5px"></i
-                >Giỏ Hàng</a
-              >
-            </li>
-          </ul>
-          <div class="dropdown text-end">
-            <a
-              href="#"
-              class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <img
-                src="images/default-user-image.png"
-                alt="mdo"
-                width="32"
-                height="32"
-                class="rounded-circle" />
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div class="col-12 col-lg-auto text-center text-lg-start">
+            <a href="/" class="d-inline-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
             </a>
-            <ul class="dropdown-menu text-small">
+          </div>
+          <div class="col-12 col-lg text-center text-lg-start">
+            <ul class="nav justify-content-center justify-content-lg-start mb-0">
               <li>
-                <a class="dropdown-item" href="./pages/ThongTinNguoiDung.html"
-                  >Thông tin tài khoản</a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="./pages/DangNhap.html"
-                  id="dangNhap"
-                  >Đăng Nhập</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="./pages/DangKy.html" id="dangKy"
-                  >Đăng Ký</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="index.html"
-                  id="dangXuat"
-                  onclick="DangXuat()"
-                  >Đăng Xuất</a
-                >
+                <a href="index.html" class="nav-link px-2 link-secondary" id="HomePage">
+                  <i class="fa-solid fa-house me-1"></i>Trang Chủ
+                </a>
               </li>
             </ul>
+          </div>   
+          <div class="col-12 col-lg">
+            <form role="search" class="w-100">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                aria-label="Search" />
+            </form>
           </div>
+
+          <div class="col-12 col-lg-auto text-center text-lg-end">
+            <a href="#" class="nav-link px-2 link-secondary" id="GioHang">
+              <i class="fa-solid fa-cart-shopping me-1"></i>Giỏ Hàng
+            </a>
+          </div>
+          
+          <div class="col-12 col-lg-auto text-center text-lg-end">
+            <div class="dropdown">
+              <a
+                href="#"
+                class="d-inline-block link-body-emphasis text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img
+                  src="images/default-user-image.png"
+                  alt="user"
+                  width="32"
+                  height="32"
+                  class="rounded-circle" />
+              </a>
+              <ul class="dropdown-menu text-small dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="./pages/ThongTinNguoiDung.html">Thông tin tài khoản</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="./pages/DangNhap.html" id="dangNhap">Đăng Nhập</a></li>
+                <li><a class="dropdown-item" href="./pages/DangKy.html" id="dangKy">Đăng Ký</a></li>
+                <li>
+                  <a class="dropdown-item" href="index.html" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+    
         </div>
       </div>
     </header>
+    
     <div class="album py-5 bg-body-tertiary">
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

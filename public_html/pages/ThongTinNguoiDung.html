@@ -72,7 +72,7 @@
           <div class="col-12 col-lg text-center text-lg-start">
             <ul class="nav justify-content-center justify-content-lg-start mb-0">
               <li>
-                <a href="/public_html/index.html" class="nav-link px-2 link-secondary" id="HomePage">
+                <a href="../index.html" class="nav-link px-2 link-secondary" id="HomePage">
                   <i class="fa-solid fa-house me-1"></i>Trang Chủ
                 </a>
               </li>
@@ -102,7 +102,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <img
-                  src="/public_html/images/default-user-image.png"
+                  src="../images/default-user-image.png"
                   alt="user"
                   width="32"
                   height="32"
@@ -110,13 +110,13 @@
               </a>
               <ul class="dropdown-menu text-small dropdown-menu-end">
                 <li>
-                  <a class="dropdown-item" href="./ThongTinNguoiDung.html">Thông tin tài khoản</a>
+                  <a class="dropdown-item" href="#">Thông tin tài khoản</a>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="./pages/DangNhap.html" id="dangNhap">Đăng Nhập</a></li>
-                <li><a class="dropdown-item" href="./pages/DangKy.html" id="dangKy">Đăng Ký</a></li>
+                <li><a class="dropdown-item" href="DangNhap.html" id="dangNhap">Đăng Nhập</a></li>
+                <li><a class="dropdown-item" href="DangKy.html" id="dangKy">Đăng Ký</a></li>
                 <li>
-                  <a class="dropdown-item" href="index.html" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a>
+                  <a class="dropdown-item" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a>
                 </li>
               </ul>
             </div>
@@ -178,7 +178,7 @@
         const currentUser = localStorage.getItem("currentlogin");
         if (currentUser) {
           localStorage.removeItem("currentlogin");
-          location.reload();
+          window.location.href = "../index.html"
         } else {
           console.log("Khong co user nao!");
         }
@@ -191,9 +191,9 @@
         const currentUser = localStorage.getItem("currentlogin");
 
         if (currentUser) {
-          window.location.href = "/public_html/pages/GioHang.html";
+          window.location.href = "GioHang.html";
         } else {
-          window.location.href = "/public_html/pages/DangNhap.html";
+          window.location.href = "DangNhap.html";
         }
       });
 

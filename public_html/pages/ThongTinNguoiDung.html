@@ -134,7 +134,7 @@
             src="../images/default-user-image.png"
             alt="User Profile"
             class="rounded-circle profile-img mb-3 w-25 h-25" />
-          <h3 class="TenNguoiDung"></h3>
+          <h3 class="TenNguoiDung" id="showUsername"></h3>
           <ul class="list-group list-group-flush mb-3">
             <li class="list-group-item bg-transparent">
               <i class="bi bi-envelope-fill me-2" id="EmailNguoiDung"></i>
@@ -147,7 +147,10 @@
     <script>
       function GetUserName() {
         const users = JSON.parse(localStorage.getItem("currentlogin"));
-        if (!users || users.length === 0) return;
+        if (!users || users.length == 0) {
+          document.getElementById("showUsername").innerText = "Chưa đăng nhập"
+          return
+        };
 
         const UserName = users.TenNguoiDung;
         const username = document.querySelectorAll(".TenNguoiDung");

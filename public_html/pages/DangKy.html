@@ -140,88 +140,76 @@
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
     };
-
+    
     formDK.addEventListener("submit", function (e) {
-      //Dùng ngăn chặn việc load lại trang web
+      
       e.preventDefault();
+      var kiemtradk = true
 
-      //check dữ liều nhập, nếu không có sẽ hiện lỗi :: TenNguoiDung
-      if (!TenNguoiDung.value) {
-        usernameErrorElement.style.display = "block";
-      } else if (TenNguoiDung.value.length <= 5) {
+      if (!TenNguoiDung.value || TenNguoiDung.value.length <= 5) {
         usernameErrorElement.style.display = "block";
         usernameErrorElement.innerHTML =
           "*Tên phải có đầy đủ họ tên và trên 5 kí tự";
+        kiemtradk = false
       } else {
         usernameErrorElement.style.display = "none";
       }
-      //check dữ liều nhập, nếu không có sẽ hiện lỗi :: EmailNguoiDung
       if (!EmailNguoiDung.value) {
         emailErrorElement.style.display = "block";
+        kiemtradk = false
       } else {
         emailErrorElement.style.display = "none";
       }
-      //check dữ liều nhập, nếu không có sẽ hiện lỗi :: MatKhauNguoiDung
-      if (!MatKhauNguoiDung.value) {
-        passwordErrorElement.style.display = "block";
-      } else if (MatKhauNguoiDung.value.length <= 7) {
+      if (!MatKhauNguoiDung.value || MatKhauNguoiDung.value.length <= 7) {
         passwordErrorElement.style.display = "block";
         passwordErrorElement.innerHTML = "*Mật khẩu phải có trên 7 kí tự";
-      } else {
+        kiemtradk = false
+      }
+      else {
         passwordErrorElement.style.display = "none";
       }
-      //check dữ liều nhập, nếu không có sẽ hiện lỗi :: XacNhanMatKhau
-      if (!XacNhanMatKhau.value) {
-        confirmPasswordErrorElement.style.display = "block";
-      } else {
-        confirmPasswordErrorElement.style.display = "none";
-      }
 
-      //Kiểm tra mật khẩu trùng khớp
       if (MatKhauNguoiDung.value !== XacNhanMatKhau.value) {
         confirmPasswordErrorElement.style.display = "block";
         confirmPasswordErrorElement.innerHTML = "*Mật khẩu không khớp";
+        kiemtradk = false
       } else {
         confirmPasswordErrorElement.style.display = "none";
       }
       if (!xacNhanTOS.checked) {
         confirmCheckedElement.style.display = "block";
+        kiemtradk = false
       } else {
         confirmCheckedElement.style.display = "none";
       }
 
-      //Lấy dữ liệu lên localStorage
-      if (
-        TenNguoiDung.value &&
-        EmailNguoiDung.value &&
-        MatKhauNguoiDung.value &&
-        XacNhanMatKhau.value &&
-        MatKhauNguoiDung.value === XacNhanMatKhau.value &&
-        xacNhanTOS &&
-        xacNhanTOS.checked
-      ) {
-        //gom lại thành một profile
-        const userdata = {
-          userId: Math.ceil(Math.random() * 100000000),
-          TenNguoiDung: TenNguoiDung.value,
-          EmailNguoiDung: EmailNguoiDung.value,
-          MatKhauNguoiDung: MatKhauNguoiDung.value,
-        };
+      if (kiemtradk) {
+        if (
+          TenNguoiDung.value &&
+          EmailNguoiDung.value &&
+          MatKhauNguoiDung.value &&
+          XacNhanMatKhau.value &&
+          MatKhauNguoiDung.value === XacNhanMatKhau.value &&
+          xacNhanTOS &&
+          xacNhanTOS.checked
+        ) {
 
-        console.log(userdata);
-        //đưa vào bảng
-        ThongTinNguoiDung.push(userdata);
+          const userdata = {
+            userId: Math.ceil(Math.random() * 100000000),
+            TenNguoiDung: TenNguoiDung.value,
+            EmailNguoiDung: EmailNguoiDung.value,
+            MatKhauNguoiDung: MatKhauNguoiDung.value,
+          };
 
-        //Lưu trữ lên localStorage
-        localStorage.setItem("users", JSON.stringify(ThongTinNguoiDung));
+          console.log(userdata);
 
-        //Khi thành công chuyển sang đăng nhập
-        setTimeout(function () {
-          window.location.href = "DangNhap.html";
-        }, 1000);
-      } else {
-        if (!xacNhanTOS.checked) {
-          confirmCheckedElement.style.display = "block";
+          ThongTinNguoiDung.push(userdata);
+
+          localStorage.setItem("users", JSON.stringify(ThongTinNguoiDung));
+
+          setTimeout(function () {
+            window.location.href = "DangNhap.html";
+          }, 1000);
         }
       }
     });

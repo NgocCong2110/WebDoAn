@@ -6,6 +6,11 @@ $user = "root";
 $pass = "123456";
 $db = "webfoodoo";
 
+// $host = "localhost";
+// $user = "sswnsemj_webfoodoo";
+// $pass = "2BNcNV2Gb2wfGxPg7ksw";
+// $db = "sswnsemj_webfoodoo";
+
 $coon = new mysqli($host, $user, $pass, $db);
 
 if($coon ->connect_error){

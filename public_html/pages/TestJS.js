@@ -7,7 +7,7 @@ async function LayThongTin(){
     //     // }
     // })
     //Dung php
-    const respone = await fetch("api.php").then(respone => respone.json()).then(data => {
+    const respone = await fetch("https://foodoo.id.vn").then(respone => respone.json()).then(data => {
         data.forEach(nguoidung => {
             var chuoi = "";
             chuoi += `TenNguoiDung : ${nguoidung.tennguoidung}, EmailNguoiDung : ${nguoidung.emailnguoidung}`

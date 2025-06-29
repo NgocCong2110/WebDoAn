@@ -10,6 +10,7 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="DuLieuMonAn.js"></script>
   <style>
     #GioHang,
     #HomePage {
@@ -133,7 +134,7 @@
         <div class="col-3">100.000Đ</div>
         <div class="col-3">Quận 1</div>
         <div class="col-1 text-end">
-          <button class="btn btn-sm btn-primary">Thêm vào giỏ hàng</button>
+          <button class="btn btn-sm btn-primary" onclick="themvaogiohang('bo')">Thêm vào giỏ hàng</button>
         </div>
       </div>
       <div class="row align-items-center py-2 border-bottom" style="height: 100px">
@@ -144,7 +145,7 @@
         <div class="col-3">150.000Đ</div>
         <div class="col-3">Quận 2</div>
         <div class="col-1 text-end">
-          <button class="btn btn-sm btn-primary">Thêm vào giỏ hàng</button>
+          <button class="btn btn-sm btn-primary" onclick="themvaogiohang('pm')">Thêm vào giỏ hàng</button>
         </div>
       </div>
     </div>
@@ -160,7 +161,7 @@
       }
     }
     //kiem tra currentLogin gio hang
-    const GioHang = document.getElementById("GioHang");
+      const GioHang = document.getElementById("GioHang");
 
     GioHang.addEventListener("click", function (e) {
       e.preventDefault();
@@ -169,7 +170,11 @@
       if (currentUser) {
         window.location.href = "GioHang.html";
       } else {
-        window.location.href = "DangNhap.html";
+        const check = confirm("Bạn phải có tài khoản mới dùng được tính năng này, bạn có muốn chuyển đến form đăng nhập?")
+        if (check == true)
+          setInterval(() => {
+            window.location.href = "DangNhap.html";
+          }, 2000)
       }
     });
 

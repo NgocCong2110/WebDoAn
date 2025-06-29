@@ -160,7 +160,8 @@
       }
     }
     //kiem tra currentLogin gio hang
-    const GioHang = document.getElementById("GioHang");
+    //kiem tra currentLogin gio hang
+      const GioHang = document.getElementById("GioHang");
 
     GioHang.addEventListener("click", function (e) {
       e.preventDefault();
@@ -169,7 +170,11 @@
       if (currentUser) {
         window.location.href = "GioHang.html";
       } else {
-        window.location.href = "DangNhap.html";
+        const check = confirm("Bạn phải có tài khoản mới dùng được tính năng này, bạn có muốn chuyển đến form đăng nhập?")
+        if (check == true)
+          setInterval(() => {
+            window.location.href = "DangNhap.html";
+          }, 2000)
       }
     });
 

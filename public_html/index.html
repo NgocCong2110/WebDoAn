@@ -55,7 +55,6 @@
     #GioHang:hover::after {
       width: 100%;
     }
-
   </style>
 </head>
 
@@ -149,11 +148,19 @@
     </button>
   </div>
 
+  <div class="text-center d-flex flex-column justify-content-center align-items-center w-100 my-5"
+    style="height: 40vh; background-color: #fcead0;">
+    <h1 class="fw-bold">Food&Drink</h1>
+    <p>Chúng tôi đề xuất món ăn ở phía dưới và còn mở rộng thêm sau này</p>
+  </div>
 
-
-  <div class="album py-5 bg-body-tertiary">
+  <div class="album py-5 bg-body-tertiary--bg-white">
+    <div class="text-start px-5">
+      <h1 class="fw-bold">Danh sách món được đề xuất</h1>
+    </div>
     <div class="container px-3">
-      <div class="d-grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 100%; overflow-x: hidden;">
+      <div class="d-grid gap-2"
+        style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 100%; overflow-x: hidden;">
         <div class="card m-1 shadow-sm p-2">
           <img src="images/AnhMiY.jpg" class="bd-placeholder-img card-img-top" height="225"
             style="object-fit: cover; width: 100%" alt="Thumbnail" />
@@ -211,11 +218,11 @@
       window.location.href = "pages/LuaChonMonMi.html";
     }
 
-    function ChuyenSangPizza(){
+    function ChuyenSangPizza() {
       window.location.href = "pages/LuaChonPizza.html"
     }
 
-    function ChuyenSangBurger(){
+    function ChuyenSangBurger() {
       window.location.href = "pages/LuaChonHamburger.html"
     }
     function DangXuat() {
@@ -237,7 +244,11 @@
       if (currentUser) {
         window.location.href = "pages/GioHang.html";
       } else {
-        window.location.href = "pages/DangNhap.html";
+        const check = confirm("Bạn phải có tài khoản mới dùng được tính năng này, bạn có muốn chuyển đến form đăng nhập?")
+        if (check == true)
+          setInterval(() => {
+            window.location.href = "pages/DangNhap.html";
+          }, 2000)
       }
     });
 

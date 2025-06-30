@@ -1,170 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Form</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <style>
-      .divider:after,
-      .divider:before {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: #eee;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .h-custom {
+      height: calc(100% - 73px);
+    }
+
+    @media (max-width: 450px) {
       .h-custom {
-        height: calc(100% - 73px);
+        height: 100%;
       }
-      @media (max-width: 450px) {
-        .h-custom {
-          height: 100%;
-        }
-      }
-    </style>
-  </head>
+    }
+  </style>
+</head>
 
-  <body>
-    <section class="vh-100">
-      <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-md-9 col-lg-6 col-xl-5">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-              class="img-fluid"
-              alt="Sample image" />
-          </div>
-          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form id="formDangNhap">
-              <div
-                class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p class="lead fw-normal mb-0 me-3">Đăng nhập với</p>
-                <button
-                  type="button"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-facebook-f"></i>
-                </button>
+<body>
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+            alt="Sample image" />
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form id="formDangNhap">
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+              <p class="lead fw-normal mb-0 me-3">Đăng nhập với</p>
+              <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
 
-                <button
-                  type="button"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-google"></i>
-                </button>
+              <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+            </div>
+
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0">Hoặc</p>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="email" id="EmailDangNhap" class="form-control form-control-lg"
+                placeholder="Nhập vào email đăng nhập" />
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-3">
+              <input type="password" id="MatKhau" class="form-control form-control-lg" placeholder="Nhập mật khẩu" />
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                  Remember me
+                </label>
               </div>
+              <a href="#!" class="text-body">Quên mật khẩu?</a>
+            </div>
 
-              <div class="divider d-flex align-items-center my-4">
-                <p class="text-center fw-bold mx-3 mb-0">Hoặc</p>
-              </div>
-
-              <div data-mdb-input-init class="form-outline mb-4">
-                <input
-                  type="email"
-                  id="EmailDangNhap"
-                  class="form-control form-control-lg"
-                  placeholder="Nhập vào email đăng nhập" />
-              </div>
-
-              <div data-mdb-input-init class="form-outline mb-3">
-                <input
-                  type="password"
-                  id="MatKhau"
-                  class="form-control form-control-lg"
-                  placeholder="Nhập mật khẩu" />
-              </div>
-
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="form-check mb-0">
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    value=""
-                    id="form2Example3" />
-                  <label class="form-check-label" for="form2Example3">
-                    Remember me
-                  </label>
-                </div>
-                <a href="#!" class="text-body">Quên mật khẩu?</a>
-              </div>
-
-              <div class="text-center text-lg-start mt-4 pt-2">
-                <button
-                  type="submit"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-primary btn-lg"
-                  style="padding-left: 2.5rem; padding-right: 2.5rem">
-                  Đăng nhập
-                </button>
-                <p class="small fw-bold mt-2 pt-1 mb-0">
-                  Bạn chưa có tài khoản?
-                  <a href="DangKy.html" class="link-danger">Đăng kí</a>
-                </p>
-              </div>
-            </form>
-          </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem">
+                Đăng nhập
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">
+                Bạn chưa có tài khoản?
+                <a href="DangKy.html" class="link-danger">Đăng kí</a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script>
-      const formDN = document.getElementById("formDangNhap");
+  <script>
+    const formDN = document.getElementById("formDangNhap");
 
-      //Lấy element người dùng
-      const emailElement = document.getElementById("EmailDangNhap");
-      const matkhauElement = document.getElementById("MatKhau");
+    //Lấy element người dùng
+    const emailElement = document.getElementById("EmailDangNhap");
+    const matkhauElement = document.getElementById("MatKhau");
 
-      formDN.addEventListener("submit", function (e) {
-        e.preventDefault();
+    formDN.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-        //dữ liệu đầu vào
+      //dữ liệu đầu vào
 
-        //lấy dữ liệu trên localStorage
-        const ThongTinNguoiDung =
-          JSON.parse(localStorage.getItem("users")) || [];
-        //tìm kiếm thông tin người dùng tồn tại
-        const timNguoiDung = ThongTinNguoiDung.find(
-          (userdata) =>
-            userdata.EmailNguoiDung === emailElement.value &&
-            userdata.MatKhauNguoiDung === matkhauElement.value
-        );
-        if(!timNguoiDung){
-          alert("Sai email hoặc mật khẩu. Vui lòng nhập lại!");
-        } else {
-          //Lay thong tin nguoi dung hien tai
-          localStorage.setItem("currentlogin", JSON.stringify(timNguoiDung))
-          window.location.href = "../index.html";
+      //lấy dữ liệu trên localStorage
+      const ThongTinNguoiDung =
+        JSON.parse(localStorage.getItem("users")) || [];
+      //tìm kiếm thông tin người dùng tồn tại
+      const timNguoiDung = ThongTinNguoiDung.find(
+        (userdata) =>
+          userdata.EmailNguoiDung === emailElement.value &&
+          userdata.MatKhauNguoiDung === matkhauElement.value
+      );
+      if (!timNguoiDung) {
+        alert("Sai email hoặc mật khẩu. Vui lòng nhập lại!");
+      }
+      else if (timNguoiDung == null) {
+        async function truyvan() {
+          const gmaildn = document.getElementById("EmailDangNhap").value
+          const matkhaudn = document.getElementById("MatKhau").value
+          const kiemtradn = {
+            gmaildn: gmaildn,
+            matkhaudn: matkhaudn
+          }
+          try {
+            const respone = await fetch("https://foodoo.id.vn/pages/TruyVanNguoiDung.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(kiemtradn)
+            })
+            const ketqua = await respone.json()
+            console.log(ketqua)
+            if(ketqua.succes){
+              alert("Đăng nhập thành công")
+              setInterval(() => {
+                window.location.href = "../index.html"
+                localStorage.setItem("currentlogin", JSON.stringify(timNguoiDung))
+              })
+            }
+          } catch (err) {
+            console.log(err)
+          }
         }
-      });
+      }
+      else {
+        //Lay thong tin nguoi dung hien tai
+        localStorage.setItem("currentlogin", JSON.stringify(timNguoiDung))
+        window.location.href = "../index.html";
+      }
+    });
 
-      // function DangNhap(){
-      //   const EmailND = document.getElementById("EmailNguoiDung").value
-      //   const MatKhauNd = document.getElementById("MatKhauNguoiDung").value
-      //   const ThongTin = JSON.parse(localStorage.getItem("ThongTinNguoiDung"))
-      //   const EmailLayDuoc = ThongTin.EmailNguoiDung
-      //   const MatKhauLayDuoc = ThongTin.MatKhauNguoiDung
-      //   if(EmailND === EmailLayDuoc && MatKhauNd === MatKhauLayDuoc){
-      //     alert("Đăng Nhập thành công")
-      //     setInterval(() => {
-      //       window.location.href = "../index.html"
-      //     }, 1000);
-      //   }
-      //   // localStorage.removeItem("ThongTinNguoiDung") Dung neu muon xoa thong tin nguoi dung
-      // }
-    </script>
-  </body>
+    // function DangNhap(){
+    //   const EmailND = document.getElementById("EmailNguoiDung").value
+    //   const MatKhauNd = document.getElementById("MatKhauNguoiDung").value
+    //   const ThongTin = JSON.parse(localStorage.getItem("ThongTinNguoiDung"))
+    //   const EmailLayDuoc = ThongTin.EmailNguoiDung
+    //   const MatKhauLayDuoc = ThongTin.MatKhauNguoiDung
+    //   if(EmailND === EmailLayDuoc && MatKhauNd === MatKhauLayDuoc){
+    //     alert("Đăng Nhập thành công")
+    //     setInterval(() => {
+    //       window.location.href = "../index.html"
+    //     }, 1000);
+    //   }
+    //   // localStorage.removeItem("ThongTinNguoiDung") Dung neu muon xoa thong tin nguoi dung
+    // }
+  </script>
+</body>
+
 </html>

@@ -102,8 +102,6 @@
     formDN.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      //dữ liệu đầu vào
-
       //lấy dữ liệu trên localStorage
       const ThongTinNguoiDung =
         JSON.parse(localStorage.getItem("users")) || [];
@@ -117,7 +115,10 @@
         async function truyvan() {
           const gmaildn = emailElement.value;
           const matkhaudn = matkhauElement.value;
-          const kiemtradn = { gmaildn, matkhaudn };
+          const kiemtradn = {
+            gmaildn : gmaildn,
+            matkhaudn : matkhaudn
+          }
 
           try {
             const respone = await fetch("https://foodoo.id.vn/pages/TruyVanNguoiDung.php", {
@@ -131,7 +132,6 @@
             console.log(ketqua);
             if (ketqua.success) {
               alert("Đăng nhập thành công");
-              // Lưu thông tin đăng nhập hiện tại
               localStorage.setItem("currentlogin", JSON.stringify(kiemtradn));
               window.location.href = "../index.html";
             } else {
@@ -142,7 +142,7 @@
           }
         }
 
-        truyvan(); // GỌI HÀM TRUY VẤN
+        truyvan(); 
       }
 
       else {

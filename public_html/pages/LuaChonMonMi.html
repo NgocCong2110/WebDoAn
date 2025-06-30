@@ -134,7 +134,7 @@
         <div class="col-3">100.000Đ</div>
         <div class="col-3">Quận 1</div>
         <div class="col-1 text-end">
-          <button class="btn btn-sm btn-primary" onclick="themvaogiohang('bo')">Thêm vào giỏ hàng</button>
+          <button class="btn btn-sm btn-primary themdodung" onclick="themvaogiohang('bo')">Thêm vào giỏ hàng</button>
         </div>
       </div>
       <div class="row align-items-center py-2 border-bottom" style="height: 100px">
@@ -145,7 +145,7 @@
         <div class="col-3">150.000Đ</div>
         <div class="col-3">Quận 2</div>
         <div class="col-1 text-end">
-          <button class="btn btn-sm btn-primary" onclick="themvaogiohang('pm')">Thêm vào giỏ hàng</button>
+          <button class="btn btn-sm btn-primary themdodung" onclick="themvaogiohang('pm')">Thêm vào giỏ hàng</button>
         </div>
       </div>
     </div>
@@ -180,8 +180,9 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       const currentUser = localStorage.getItem("currentlogin");
-
       if (!currentUser) {
+        const laydod = document.querySelectorAll(".themdodung")
+        laydod.forEach(item => item.style.display = "none")
         const dangXuatBtn = document.getElementById("dangXuat");
         if (dangXuatBtn) dangXuatBtn.style.display = "none";
       }

@@ -46,7 +46,6 @@
       width: 100%;
     }
 
-
     #GioHang::after {
       content: "";
       position: absolute;
@@ -109,15 +108,18 @@
               <li>
                 <hr class="dropdown-divider" />
               </li>
-              <li><a class="dropdown-item" href="DangNhap.html" id="dangNhap">Đăng Nhập</a></li>
-              <li><a class="dropdown-item" href="DangKy.html" id="dangKy">Đăng Ký</a></li>
+              <li>
+                <a class="dropdown-item" href="DangNhap.html" id="dangNhap">Đăng Nhập</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="DangKy.html" id="dangKy">Đăng Ký</a>
+              </li>
               <li>
                 <a class="dropdown-item" href="../index.html" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a>
               </li>
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </header>
@@ -132,27 +134,44 @@
       <div class="col text-center">Số Tiền</div>
       <div class="col text-center">Thao Tác</div>
     </div>
-    <div class="container my-3" id="giohang">
-
-    </div>
+    <div class="container my-3" id="giohang"></div>
   </div>
-
 
   <script>
     function DangXuat() {
       const currentUser = localStorage.getItem("currentlogin");
       if (currentUser) {
         localStorage.removeItem("currentlogin");
-        window.location.href = "../index.html"
+        window.location.href = "../index.html";
       } else {
-        console.log("Khong co user nao!");
+        console.log("Không có user nào!");
       }
-    };
+    }
+
+    function XoaVatPham(index) {
+      let list = JSON.parse(localStorage.getItem("danhsachmonan")) || [];
+      list.splice(index, 1);
+      localStorage.setItem("danhsachmonan", JSON.stringify(list));
+      location.reload();
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       const currentUser = localStorage.getItem("currentlogin");
-      const list = JSON.parse(localStorage.getItem("danhsachmonan"))
-      let giohang = document.getElementById("giohang")
-      list.forEach(mon => {
+
+      if (!currentUser) {
+        const dangXuatBtn = document.getElementById("dangXuat");
+        if (dangXuatBtn) dangXuatBtn.style.display = "none";
+      } else {
+        const dangNhapBtn = document.getElementById("dangNhap");
+        const dangKyBtn = document.getElementById("dangKy");
+        if (dangNhapBtn) dangNhapBtn.style.display = "none";
+        if (dangKyBtn) dangKyBtn.style.display = "none";
+      }
+
+      const list = JSON.parse(localStorage.getItem("danhsachmonan")) || [];
+      const giohang = document.getElementById("giohang");
+
+      list.forEach((mon, index) => {
         const vatpham = `
     <div class="container my-3">
       <div class="d-flex justify-content-center align-items-center bg-white text-muted fs-6 lh-sm rounded shadow-sm py-3 px-3 mb-2">
@@ -163,31 +182,15 @@
         <div class="col text-center">${mon.soluong}</div>
         <div class="col text-center">${mon.diachi}</div>
         <div class="col text-center">
-          <button class="btn btn-sm btn-danger" id = ${mon.id} onclick = "XoaVatPham()">Xóa</button>
+          <button class="btn btn-sm btn-danger" onclick="XoaVatPham(${index})">Xóa</button>
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
         giohang.innerHTML += vatpham;
       });
-      if (!currentUser) {
-        const dangXuatBtn = document.getElementById("dangXuat");
-        if (dangXuatBtn) dangXuatBtn.style.display = "none";
-      }
-
-      if (currentUser) {
-        const dangNhapBtn = document.getElementById("dangNhap");
-        const dangKyBtn = document.getElementById("dangKy");
-
-        if (dangNhapBtn) dangNhapBtn.style.display = "none";
-        if (dangKyBtn) dangKyBtn.style.display = "none";
-
-      }
-    });
-    function XoaVatPham(){
-      const index = document.getElementById("")
-    }
+    })
   </script>
+
 </body>
 
 </html>

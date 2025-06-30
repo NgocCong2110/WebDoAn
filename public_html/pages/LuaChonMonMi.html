@@ -1,200 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="DuLieuMonAn.js"></script>
-  <style>
-    #GioHang,
-    #HomePage {
-      display: inline-block;
-      position: relative;
-      padding-bottom: 4px;
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="DuLieuMonAn.js"></script>
+    <style>
+      #GioHang,
+      #HomePage {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 4px;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
-    #HomePage::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 3px;
-      background-color: #2893e0;
-      transition: width 0.4s ease;
-    }
+      #HomePage::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
+      }
 
-    #HomePage:hover::after {
-      width: 100%;
-    }
+      #HomePage:hover::after {
+        width: 100%;
+      }
 
+      #GioHang::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #2893e0;
+        transition: width 0.4s ease;
+      }
 
-    #GioHang::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 3px;
-      background-color: #2893e0;
-      transition: width 0.4s ease;
-    }
+      #GioHang:hover::after {
+        width: 100%;
+      }
 
-    #GioHang:hover::after {
-      width: 100%;
-    }
-  </style>
-</head>
-<body>
+      /* Mobile interface */
+      @media (max-width: 991.98px) {
+        #navContent {
+          display: none !important;
+        }
+      }
+      #slideMenu {
+        position: fixed;
+        top: 0;
+        left: -250px; /* ẩn đi */
+        width: 250px;
+        height: 100%;
+        background-color: #ffffff;
+        box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+        z-index: 1050;
+        transition: left 0.3s ease;
+      }
+
+      #slideMenu.show {
+        left: 0;
+      }
+
+      #slideMenu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #slideMenu a:hover {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
     <header class="p-3 mb-3 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-        <div class="col-12 col-lg-auto text-center text-lg-start">
-          <a href="/" class="d-inline-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-        </div>
-        <div class="col-12 col-lg text-center text-lg-start">
-          <ul class="nav justify-content-center justify-content-lg-start mb-0">
-            <li>
-              <a href="../index.html" class="nav-link px-2 link-secondary" id="HomePage">
-                <i class="fa-solid fa-house me-1"></i>Trang Chủ
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-12 col-lg">
-          <form role="search" class="w-100">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
+      <div class="container">
+        <div
+          class="d-flex align-items-center justify-content-between d-lg-none mb-2">
+          <button class="btn btn-outline-secondary" id="menuToggle">
+            &#9776;
+          </button>
+          <form role="search" class="flex-grow-1 mx-2">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search" />
           </form>
         </div>
-
-        <div class="col-12 col-lg-auto text-center text-lg-end">
-          <a href="GioHang.html" class="nav-link px-2 link-secondary" id="GioHang">
-            <i class="fa-solid fa-cart-shopping me-1"></i>Giỏ Hàng
-          </a>
-        </div>
-
-        <div class="col-12 col-lg-auto text-center text-lg-end">
-          <div class="dropdown">
-            <a href="#" class="d-inline-block link-body-emphasis text-decoration-none dropdown-toggle"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="../images/default-user-image.png" alt="user" width="32" height="32" class="rounded-circle" />
+        
+        <div
+          id="navContent"
+          class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div class="col-12 col-lg-auto text-center text-lg-start">
+            <a
+              href="/"
+              class="d-inline-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+              <svg
+                class="bi me-2"
+                width="40"
+                height="32"
+                role="img"
+                aria-label="Bootstrap">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
             </a>
-            <ul class="dropdown-menu text-small dropdown-menu-end">
+          </div>
+          <div class="col-12 col-lg text-center text-lg-start">
+            <ul
+              class="nav justify-content-center justify-content-lg-start mb-0">
               <li>
-                <a class="dropdown-item" href="ThongTinNguoiDung.html">Thông tin tài khoản</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="DangNhap.html" id="dangNhap">Đăng Nhập</a></li>
-              <li><a class="dropdown-item" href="DangKy.html" id="dangKy">Đăng Ký</a></li>
-              <li>
-                <a class="dropdown-item" href="../index.html" id="dangXuat" onclick="DangXuat()">Đăng Xuất</a>
+                <a
+                  href="../index.html"
+                  class="nav-link px-2 link-secondary"
+                  id="HomePage">
+                  <i class="fa-solid fa-house me-1"></i>Trang Chủ
+                </a>
               </li>
             </ul>
+          </div>
+          <div class="col-12 col-lg">
+            <form role="search" class="w-100">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                aria-label="Search" />
+            </form>
+          </div>
+
+          <div class="col-12 col-lg-auto text-center text-lg-end">
+            <a
+              href="GioHang.html"
+              class="nav-link px-2 link-secondary"
+              id="GioHang">
+              <i class="fa-solid fa-cart-shopping me-1"></i>Giỏ Hàng
+            </a>
+          </div>
+
+          <div class="col-12 col-lg-auto text-center text-lg-end">
+            <div class="dropdown">
+              <a
+                href="#"
+                class="d-inline-block link-body-emphasis text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img
+                  src="../images/default-user-image.png"
+                  alt="user"
+                  width="32"
+                  height="32"
+                  class="rounded-circle" />
+              </a>
+              <ul class="dropdown-menu text-small dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="ThongTinNguoiDung.html"
+                    >Thông tin tài khoản</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="DangNhap.html" id="dangNhap"
+                    >Đăng Nhập</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="DangKy.html" id="dangKy"
+                    >Đăng Ký</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../index.html"
+                    id="dangXuat"
+                    onclick="DangXuat()"
+                    >Đăng Xuất</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="slideMenu">
+      <button
+        id="closeSlideMenu"
+        class="btn btn-close btn-sm ms-auto d-block my-2 me-2"></button>
+      <a href="index.html" class="d-block px-3 py-2"
+        ><i class="fa-solid fa-house me-1"></i> Trang Chủ</a
+      >
+      <a href="pages/GioHang.html" id="GioHangSlide" class="d-block px-3 py-2"
+        ><i class="fa-solid fa-cart-shopping me-1"></i> Giỏ Hàng</a
+      >
+      <a href="pages/ThongTinNguoiDung.html" class="d-block px-3 py-2"
+        ><i class="fa-solid fa-user"></i> Thông tin</a
+      >
+      <a href="pages/DangNhap.html" id="dangNhapSlide" class="d-block px-3 py-2"
+        ><i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập</a
+      >
+      <a href="pages/DangKy.html" id="dangKySlide" class="d-block px-3 py-2"
+        ><i class="fa-solid fa-registered"></i> Đăng Ký</a
+      >
+      <a
+        href="index.html"
+        id="dangXuatSlide"
+        onclick="DangXuat()"
+        class="d-block px-3 py-2"
+        ><i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất</a
+      >
+    </div>
+
+    <div id="AnhPizzaDaiDien">
+      <img
+        src="../images/AnhMiY1.jpg"
+        class="d-block w-100"
+        style="height: 70vh; object-fit: cover" />
+    </div>
+
+    <h1 style="margin-top: 1%">Danh sách món</h1>
+    <div class="container">
+      <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col-2"></div>
+          <div class="col-3">Tên Món Ăn</div>
+          <div class="col-3">Giá Tiền</div>
+          <div class="col-3">Địa chỉ</div>
+          <div class="col-1"></div>
+        </div>
+        <div
+          class="row align-items-center py-2 border-bottom"
+          style="height: 100px">
+          <div class="col-2 h-100">
+            <img
+              src="../images/AnhMiYBo.jpg"
+              class="w-100 h-100"
+              class="img-fluid"
+              style="object-fit: cover" />
+          </div>
+          <div class="col-3 text-center">Mì Ý Bò</div>
+          <div class="col-3">100.000Đ</div>
+          <div class="col-3">Quận 1</div>
+          <div class="col-1 text-end">
+            <button
+              class="btn btn-sm btn-primary themdodung"
+              onclick="themvaogiohang('bo')">
+              Thêm vào giỏ hàng
+            </button>
+          </div>
+        </div>
+        <div
+          class="row align-items-center py-2 border-bottom"
+          style="height: 100px">
+          <div class="col-2 h-100">
+            <img
+              src="../images/AnhMiYPhoMaiVoiTom.jpg"
+              class="w-100 h-100"
+              class="img-fluid"
+              style="object-fit: cover" />
+          </div>
+          <div class="col-3 text-center">Mì Ý Phô Mai Với Tôm</div>
+          <div class="col-3">150.000Đ</div>
+          <div class="col-3">Quận 2</div>
+          <div class="col-1 text-end">
+            <button
+              class="btn btn-sm btn-primary themdodung"
+              onclick="themvaogiohang('pm')">
+              Thêm vào giỏ hàng
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </header>
-
-  <div id = "AnhPizzaDaiDien">
-    <img src="../images/AnhMiY1.jpg" class="d-block w-100" style="height: 70vh; object-fit: cover;">
-  </div>
-
-
-  <h1 style="margin-top: 1%">Danh sách món</h1>
-  <div class="container">
-    <div class="container text-center">
-      <div class="row align-items-start">
-        <div class="col-2"></div>
-        <div class="col-3">Tên Món Ăn</div>
-        <div class="col-3">Giá Tiền</div>
-        <div class="col-3">Địa chỉ</div>
-        <div class="col-1"></div>
-      </div>
-      <div class="row align-items-center py-2 border-bottom" style="height: 100px">
-        <div class="col-2 h-100">
-          <img src="../images/AnhMiYBo.jpg" class="w-100 h-100" class="img-fluid" style="object-fit: cover" />
-        </div>
-        <div class="col-3 text-center">Mì Ý Bò</div>
-        <div class="col-3">100.000Đ</div>
-        <div class="col-3">Quận 1</div>
-        <div class="col-1 text-end">
-          <button class="btn btn-sm btn-primary themdodung" onclick="themvaogiohang('bo')">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-      <div class="row align-items-center py-2 border-bottom" style="height: 100px">
-        <div class="col-2 h-100">
-          <img src="../images/AnhMiYPhoMaiVoiTom.jpg" class="w-100 h-100" class="img-fluid" style="object-fit: cover" />
-        </div>
-        <div class="col-3 text-center">Mì Ý Phô Mai Với Tôm</div>
-        <div class="col-3">150.000Đ</div>
-        <div class="col-3">Quận 2</div>
-        <div class="col-1 text-end">
-          <button class="btn btn-sm btn-primary themdodung" onclick="themvaogiohang('pm')">Thêm vào giỏ hàng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    function DangXuat() {
-      const currentUser = localStorage.getItem("currentlogin");
-      if (currentUser) {
-        localStorage.removeItem("currentlogin");
-        window.location.href = "../index.html"
-      } else {
-        console.log("Khong co user nao!");
+    <script>
+      function DangXuat() {
+        const currentUser = localStorage.getItem("currentlogin");
+        if (currentUser) {
+          localStorage.removeItem("currentlogin");
+          window.location.href = "../index.html";
+        } else {
+          console.log("Khong co user nao!");
+        }
       }
-    }
-    //kiem tra currentLogin gio hang
+      //kiem tra currentLogin gio hang
       const GioHang = document.getElementById("GioHang");
 
-    GioHang.addEventListener("click", function (e) {
-      e.preventDefault();
-      const currentUser = localStorage.getItem("currentlogin");
+      GioHang.addEventListener("click", function (e) {
+        e.preventDefault();
+        const currentUser = localStorage.getItem("currentlogin");
 
-      if (currentUser) {
-        window.location.href = "GioHang.html";
-      } else {
-        const check = confirm("Bạn phải có tài khoản mới dùng được tính năng này, bạn có muốn chuyển đến form đăng nhập?")
-        if (check == true)
-          setInterval(() => {
-            window.location.href = "DangNhap.html";
-          }, 2000)
-      }
-    });
+        if (currentUser) {
+          window.location.href = "GioHang.html";
+        } else {
+          const check = confirm(
+            "Bạn phải có tài khoản mới dùng được tính năng này, bạn có muốn chuyển đến form đăng nhập?"
+          );
+          if (check == true)
+            setInterval(() => {
+              window.location.href = "DangNhap.html";
+            }, 2000);
+        }
+      });
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const currentUser = localStorage.getItem("currentlogin");
-      if (!currentUser) {
-        const laydod = document.querySelectorAll(".themdodung")
-        laydod.forEach(item => item.style.display = "none")
-        const dangXuatBtn = document.getElementById("dangXuat");
-        if (dangXuatBtn) dangXuatBtn.style.display = "none";
-      }
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentUser = localStorage.getItem("currentlogin");
 
-      if (currentUser) {
-        const dangNhapBtn = document.getElementById("dangNhap");
-        const dangKyBtn = document.getElementById("dangKy");
+        const menuToggle = document.getElementById("menuToggle");
+        const slideMenu = document.getElementById("slideMenu");
+        const closeSlideMenu = document.getElementById("closeSlideMenu");
 
-        if (dangNhapBtn) dangNhapBtn.style.display = "none";
-        if (dangKyBtn) dangKyBtn.style.display = "none";
-      }
-    });
-  </script>
-</body>
+        if (!currentUser) {
+          const laydod = document.querySelectorAll(".themdodung");
+          laydod.forEach((item) => (item.style.display = "none"));
+          const dangXuatBtn = document.getElementById("dangXuat");
+          if (dangXuatBtn) dangXuatBtn.style.display = "none";
+          document
+            .getElementById("dangXuatSlide")
+            ?.style.setProperty("display", "none", "important");
+        }
+
+        if (currentUser) {
+          const dangNhapBtn = document.getElementById("dangNhap");
+          const dangKyBtn = document.getElementById("dangKy");
+
+          if (dangNhapBtn) dangNhapBtn.style.display = "none";
+          if (dangKyBtn) dangKyBtn.style.display = "none";
+
+          document
+            .getElementById("dangNhapSlide")
+            ?.style.setProperty("display", "none", "important");
+          document
+            .getElementById("dangKySlide")
+            ?.style.setProperty("display", "none", "important");
+        }
+
+        menuToggle.addEventListener("click", function () {
+          slideMenu.classList.add("show");
+        });
+
+        closeSlideMenu.addEventListener("click", function () {
+          slideMenu.classList.remove("show");
+        });
+      });
+    </script>
+  </body>
 </html>

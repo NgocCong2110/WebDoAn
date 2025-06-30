@@ -53,13 +53,60 @@
     #GioHang:hover::after {
       width: 100%;
     }
+
+    /* Mobile interface */
+    @media (max-width: 991.98px) {
+        #navContent {
+          display: none !important;
+        }
+      }
+      #slideMenu {
+        position: fixed;
+        top: 0;
+        left: -250px; /* ẩn đi */
+        width: 250px;
+        height: 100%;
+        background-color: #ffffff;
+        box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+        z-index: 1050;
+        transition: left 0.3s ease;
+      }
+
+      #slideMenu.show {
+        left: 0;
+      }
+
+      #slideMenu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #slideMenu a:hover {
+        background-color: #f2f2f2;
+      }
   </style>
 </head>
 
 <body>
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <div
+          class="d-flex align-items-center justify-content-between d-lg-none mb-2">
+          <button class="btn btn-outline-secondary" id="menuToggle">
+            &#9776;
+          </button>
+          <form role="search" class="flex-grow-1 mx-2">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search" />
+          </form>
+        </div>
+
+      <div id="navContent" class="d-flex flex-wrap align-items-center justify-content-between gap-2">
         <div class="col-12 col-lg-auto text-center text-lg-start">
           <a href="/" class="d-inline-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
@@ -113,6 +160,35 @@
       </div>
     </div>
   </header>
+
+  <div id="slideMenu">
+    <button
+      id="closeSlideMenu"
+      class="btn btn-close btn-sm ms-auto d-block my-2 me-2"></button>
+    <a href="index.html" class="d-block px-3 py-2"
+      ><i class="fa-solid fa-house me-1"></i> Trang Chủ</a
+    >
+    <a href="pages/GioHang.html" id="GioHangSlide" class="d-block px-3 py-2"
+      ><i class="fa-solid fa-cart-shopping me-1"></i> Giỏ Hàng</a
+    >
+    <a href="pages/ThongTinNguoiDung.html" class="d-block px-3 py-2"
+      ><i class="fa-solid fa-user"></i> Thông tin</a
+    >
+    <a href="pages/DangNhap.html" id="dangNhapSlide" class="d-block px-3 py-2"
+      ><i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập</a
+    >
+    <a href="pages/DangKy.html" id="dangKySlide" class="d-block px-3 py-2"
+      ><i class="fa-solid fa-registered"></i> Đăng Ký</a
+    >
+    <a
+      href="index.html"
+      id="dangXuatSlide"
+      onclick="DangXuat()"
+      class="d-block px-3 py-2"
+      ><i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất</a
+    >
+  </div>
+
   <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh">
     <div class="card profile-card shadow mt-4">
       <div class="card-body text-center">
@@ -194,19 +270,38 @@
     //Khong viet function duoi day
     document.addEventListener("DOMContentLoaded", function () {
       const currentUser = localStorage.getItem("currentlogin");
+      
+      const menuToggle = document.getElementById("menuToggle");
+        const slideMenu = document.getElementById("slideMenu");
+        const closeSlideMenu = document.getElementById("closeSlideMenu");
 
-      if (!currentUser) {
-        const dangXuatBtn = document.getElementById("dangXuat");
-        if (dangXuatBtn) dangXuatBtn.style.display = "none";
-      }
+        if (!currentUser) {
+          //desktop
+          document.getElementById("dangXuat").style.display = "none";
+          //mobile
+          document
+            .getElementById("dangXuatSlide")
+            ?.style.setProperty("display", "none", "important");
+        } else {
+          //desktop
+          document.getElementById("dangNhap").style.display = "none";
+          document.getElementById("dangKy").style.display = "none";
+          //mobile
+          document
+            .getElementById("dangNhapSlide")
+            ?.style.setProperty("display", "none", "important");
+          document
+            .getElementById("dangKySlide")
+            ?.style.setProperty("display", "none", "important");
+        }
 
-      if (currentUser) {
-        const dangNhapBtn = document.getElementById("dangNhap");
-        const dangKyBtn = document.getElementById("dangKy");
+        menuToggle.addEventListener("click", function () {
+          slideMenu.classList.add("show");
+        });
 
-        if (dangNhapBtn) dangNhapBtn.style.display = "none";
-        if (dangKyBtn) dangKyBtn.style.display = "none";
-      }
+        closeSlideMenu.addEventListener("click", function () {
+          slideMenu.classList.remove("show");
+        });
 
       GetUserEmail(), GetUserName();
     });

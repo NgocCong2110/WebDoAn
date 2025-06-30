@@ -12,7 +12,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $sql = "INSERT INTO NguoiDung(tennguoidung, emailnguoidung, matkhaunguoidung, vaitro) values(?,?,?,?)";
 $stmt = $coon->prepare($sql);
-$stmt->bind_param("ssss", $data["tendn"], $data["emaildn"], $data["matkhaudn"], $data["vaitro"]);
+$stmt->bind_param("ssss", $data["TenNguoiDung"], $data["EmailNguoiDung"], $data["MatKhauNguoiDung"], $data["vaitro"]);
 if ($stmt->execute()) {
     echo json_encode(["status" => "success", "message" => "Thêm thành công"]);
 }

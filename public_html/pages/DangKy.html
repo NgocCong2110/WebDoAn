@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" onclick="(ThemNguoiDung())">
+                      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">
                         Đăng ký
                       </button>
                     </div>
@@ -107,114 +107,6 @@
       </div>
     </div>
   </section>
-
-  <script>
-    const formDK = document.getElementById("formDangKy");
-    //Lấy element user
-    const TenNguoiDung = document.getElementById("TenDangNhap");
-    const EmailNguoiDung = document.getElementById("EmailDangNhap");
-    const MatKhauNguoiDung = document.getElementById("MatKhau");
-    const XacNhanMatKhau = document.getElementById("XacNhanMatKhau");
-    const xacNhanTOS = document.getElementById("checkBoxTOS");
-
-    //Lấy element cảnh cáo user
-    const usernameErrorElement = document.getElementById("usernameError");
-    const emailErrorElement = document.getElementById("emailError");
-    const passwordErrorElement = document.getElementById("passwordError");
-    const confirmPasswordErrorElement = document.getElementById(
-      "confirmPasswordError"
-    );
-    const confirmCheckedElement = document.getElementById("checkedTOS");
-    //dữ liệu của LocalStorage
-    const ThongTinNguoiDung = JSON.parse(localStorage.getItem("users")) || [];
-
-    /**
-     *
-     * @param {*} email
-     * @returns
-     *
-     */
-    const validateEmail = (email) => {
-      return String(email)
-        .toLowerCase()
-        .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-    };
-    
-    formDK.addEventListener("submit", function (e) {
-      
-      e.preventDefault();
-      var kiemtradk = true
-
-      if (!TenNguoiDung.value || TenNguoiDung.value.length <= 5) {
-        usernameErrorElement.style.display = "block";
-        usernameErrorElement.innerHTML =
-          "*Tên phải có đầy đủ họ tên và trên 5 kí tự";
-        kiemtradk = false
-      } else {
-        usernameErrorElement.style.display = "none";
-      }
-      if (!EmailNguoiDung.value) {
-        emailErrorElement.style.display = "block";
-        kiemtradk = false
-      } else {
-        emailErrorElement.style.display = "none";
-      }
-      if (!MatKhauNguoiDung.value || MatKhauNguoiDung.value.length <= 7) {
-        passwordErrorElement.style.display = "block";
-        passwordErrorElement.innerHTML = "*Mật khẩu phải có trên 7 kí tự";
-        kiemtradk = false
-      }
-      else {
-        passwordErrorElement.style.display = "none";
-      }
-
-      if (MatKhauNguoiDung.value !== XacNhanMatKhau.value) {
-        confirmPasswordErrorElement.style.display = "block";
-        confirmPasswordErrorElement.innerHTML = "*Mật khẩu không khớp";
-        kiemtradk = false
-      } else {
-        confirmPasswordErrorElement.style.display = "none";
-      }
-      if (!xacNhanTOS.checked) {
-        confirmCheckedElement.style.display = "block";
-        kiemtradk = false
-      } else {
-        confirmCheckedElement.style.display = "none";
-      }
-
-      if (kiemtradk) {
-        if (
-          TenNguoiDung.value &&
-          EmailNguoiDung.value &&
-          MatKhauNguoiDung.value &&
-          XacNhanMatKhau.value &&
-          MatKhauNguoiDung.value === XacNhanMatKhau.value &&
-          xacNhanTOS &&
-          xacNhanTOS.checked
-        ) {
-
-          const userdata = {
-            userId: Math.ceil(Math.random() * 100000000),
-            TenNguoiDung: TenNguoiDung.value,
-            EmailNguoiDung: EmailNguoiDung.value,
-            MatKhauNguoiDung: MatKhauNguoiDung.value,
-          };
-
-          console.log(userdata);
-
-          ThongTinNguoiDung.push(userdata);
-
-          localStorage.setItem("users", JSON.stringify(ThongTinNguoiDung));
-
-          setTimeout(function () {
-            window.location.href = "DangNhap.html";
-          }, 2000);
-        }
-      }
-    });
-  </script>
 </body>
 
 </html>

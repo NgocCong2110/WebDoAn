@@ -114,16 +114,11 @@
           userdata.MatKhauNguoiDung === matkhauElement.value
       );
       if (!timNguoiDung) {
-        alert("Sai email hoặc mật khẩu. Vui lòng nhập lại!");
-      }
-      else if (timNguoiDung == null) {
         async function truyvan() {
-          const gmaildn = document.getElementById("EmailDangNhap").value
-          const matkhaudn = document.getElementById("MatKhau").value
-          const kiemtradn = {
-            gmaildn: gmaildn,
-            matkhaudn: matkhaudn
-          }
+          const gmaildn = emailElement.value;
+          const matkhaudn = matkhauElement.value;
+          const kiemtradn = { gmaildn, matkhaudn };
+
           try {
             const respone = await fetch("https://foodoo.id.vn/pages/TruyVanNguoiDung.php", {
               method: "POST",
@@ -131,21 +126,25 @@
                 "Content-Type": "application/json"
               },
               body: JSON.stringify(kiemtradn)
-            })
-            const ketqua = await respone.json()
-            console.log(ketqua)
-            if(ketqua.succes){
-              alert("Đăng nhập thành công")
-              setInterval(() => {
-                window.location.href = "../index.html"
-                localStorage.setItem("currentlogin", JSON.stringify(timNguoiDung))
-              })
+            });
+            const ketqua = await respone.json();
+            console.log(ketqua);
+            if (ketqua.success) {
+              alert("Đăng nhập thành công");
+              // Lưu thông tin đăng nhập hiện tại
+              localStorage.setItem("currentlogin", JSON.stringify(kiemtradn));
+              window.location.href = "../index.html";
+            } else {
+              alert("Sai email hoặc mật khẩu (trên server).");
             }
           } catch (err) {
-            console.log(err)
+            console.error("Lỗi khi gửi request:", err);
           }
         }
+
+        truyvan(); // GỌI HÀM TRUY VẤN
       }
+
       else {
         //Lay thong tin nguoi dung hien tai
         localStorage.setItem("currentlogin", JSON.stringify(timNguoiDung))

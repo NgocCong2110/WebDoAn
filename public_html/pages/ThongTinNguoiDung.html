@@ -11,7 +11,6 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="TestJS.js"></script>
   <style>
     #GioHang,
     #HomePage {
@@ -165,7 +164,7 @@
     <button
       id="closeSlideMenu"
       class="btn btn-close btn-sm ms-auto d-block my-2 me-2"></button>
-    <a href="/public_html/index.html" class="d-block px-3 py-2"
+    <a href="../index.html" class="d-block px-3 py-2"
       ><i class="fa-solid fa-house me-1"></i> Trang Chủ</a
     >
     <a href="GioHang.html" id="GioHangSlide" class="d-block px-3 py-2"
@@ -181,7 +180,7 @@
       ><i class="fa-solid fa-registered"></i> Đăng Ký</a
     >
     <a
-      href="/public_html/index.html"
+      href="../index.html"
       id="dangXuatSlide"
       onclick="DangXuat()"
       class="d-block px-3 py-2"
@@ -204,39 +203,32 @@
     </div>
   </div>
 
-  <div class = "container" id = "bangthongtin">
-    
-  </div>
-  <button onclick = "LayThongTin()">click vao</button>
-  <script>
-  async function LayThongTin() {
-  //Dung cho dotnet
-  // const respone = await fetch("http://localhost:5075/api/Thaotaccsdl/InDanhSachNguoiDung", {
-  //     method : "POST"
-  //     // headers : {
-  //     //     "Content-Type" : "application/json" chua can toi
-  //     // }
-  // })
-  //Dung php
-  let bang = document.getElementById("bangthongtin")
-  let thongtin = ""
-  const respone = await fetch("https://foodoo.id.vn/pages/api.php").then(respone => respone.json()).then(data => {
-    data.forEach(nguoidung => {
-      thongtin += `<div class = "container">
-    <div class = "text-center">
-      <div class = "row align-items-center">
+  <!-- <div class = "container">
+    <div class = "row align-items-center">
         <div class = "col-6">Tên người dùng</div>
         <div class = "col-6">Email người dùng</div>
       </div>
-      <div>
-        
-      </div>
+    <div class = "row align-items-center"  id = "bangthongtin">
     </div>
-  </div>`
-    });
-    bang.innerHTML = thongtin
-  })
-}
+  </div>
+  <button onclick = "LayThongTin()">click vao</button> -->
+  <script>
+   async function LayThongTin() {
+    let bang = document.getElementById("bangthongtin");
+    let thongtin = "";
+
+      const respone = await fetch("https://foodoo.id.vn/pages/api.php");
+      const data = await respone.json();
+
+      data.forEach(nguoidung => {
+        thongtin += `
+          <div class="col-6">${nguoidung.tennguoidung}</div>
+          <div class="col-6">${nguoidung.emailnguoidung}</div>`;
+      });
+
+      bang.innerHTML = thongtin;
+
+    }
     function GetUserName() {
       const users = JSON.parse(localStorage.getItem("currentlogin"));
       if (!users || users.length == 0) {
@@ -244,7 +236,7 @@
         return
       };
 
-      const UserName = users.TenNguoiDung;
+      const UserName = users.tendn;
       const username = document.querySelectorAll(".TenNguoiDung");
       username.forEach((el) => (el.innerText = UserName));
       // const UserInfo = JSON.parse(localStorage.getItem("users"))
@@ -259,7 +251,7 @@
       const users = JSON.parse(localStorage.getItem("currentlogin"));
       if (!users || users.length === 0) return;
 
-      const UserEmail = users.EmailNguoiDung;
+      const UserEmail = users.gmaildn;
       const emailElement = document.getElementById("EmailNguoiDung");
       if (emailElement) {
         emailElement.innerText = UserEmail;
